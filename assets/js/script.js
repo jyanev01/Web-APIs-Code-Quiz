@@ -1,33 +1,60 @@
+var startBtn = $(btn-start);
+
+var questions = [
+  {
+    title : "How many presidents has the United States had?",
+    choices :["32","68","46","51"], 
+    answer : "46"
+  },
+  {
+    title : "How many member states comprise the United Nations",
+    choices :["208","152","193","I don't Know"], 
+    answers : "193"
+  },
+  {
+    title : "Commonly uded data types DO not include",
+    choices :["A","B","C","D"], 
+    answer : ["A"]
+  },
+  {
+    title : "Question #4",
+    choices :["A","B","C","D"],
+    answer : ["C"]
+  },
+  {
+    title : "Question #5",
+    choices :["A","B","C","D"],
+    answer : ["C"]
+  },
+  {
+  title : "Question #6",
+  choices :["A","B","C","D"],
+  answer : ["C"]
+  }
+      
+];
+
+// event listener- button click
+$(".btn-start").on("click", startQuiz);
+
+function startQuiz() {
+  if(storedScores !==null) {}
+}
+
+
+// Timer that counts down from 75
+function countdown() {
+  var timeInterval=  setInterval(function(){
+    timer.innerText = timeLeft
+    timeLeft--;
+    },1000);
+};
+
+// 
 var timerEl = document.getElementById('countdown');
 var mainEl = document.getElementById('main');
 var startBtn = document.getElementById('start');
 
-// Timer that counts down from 5
-function countdown() {
-    var timeLeft = 75;
-  
-    // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-    var timeInterval = setInterval(function() {
-      // alert("One second has passed")
-      if (timeLeft >1) {
-        
-        timerEl.textContent= timeLeft + " seconds remaining";  
-        }else {
-          timerEl.textContent= timeLeft + " second remaining";
-        } 
-  
-        if(timeLeft === 0){
-          clearInterval(timeInterval);
-          timerEl.textContent=""
-          displayMessage();
-        }
-        timeLeft--;
-  
-    }, 1000);
-    
-};
-
-// 
   
 // TODO: Create an array with five question objects
 var questions=[
@@ -58,16 +85,5 @@ for (let index = 0; index < questions.length; index++) {
 
 alert("Final Score is "+ score + "/"+questions.length);
 
-// TODO: Check the user's answer against the correct answer
 
 
-// TODO: Alert the user if they are correct or wrong. Increment the score accordingly
-
-// TODO: At the end of the game, alert the user with the final score
-
-
-
-// Displays the message one word at a time
-
-
-startBtn.onclick = countdown;
