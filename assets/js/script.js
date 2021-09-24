@@ -1,5 +1,8 @@
+var timer = 75;
+var score = 0;
 var startBtn = $(btn-start);
 
+// array of questions
 var questions = [
   {
     title : "How many presidents has the United States had?",
@@ -27,22 +30,26 @@ var questions = [
     answer : ["C"]
   },
   {
-  title : "Question #6",
-  choices :["A","B","C","D"],
-  answer : ["C"]
+    title : "Question #6",
+    choices :["A","B","C","D"],
+    answer : ["C"]
   },
   {
     title : "Question #7",
-  choices :["A","B","C","D"],
-  answer : ["C"]
+    choices :["A","B","C","D"],
+    answer : ["C"]
   },
       
 ];
 
+// for loop can pull questions in sequence
 for (var i =0; questions.length; i++) {
-  questions [i].choices;
+  var choiceOfQuestion= questions[i].choices;
+
+  // jQuery add choiceOfQuestion to html dynamically
+  CONTENT.replaceWith(choiceOfQuestion)
   return
-}
+};
 
 // event listener- button click
 $(".btn-start").on("click", startQuiz);
