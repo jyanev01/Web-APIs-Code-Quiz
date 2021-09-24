@@ -30,9 +30,19 @@ var questions = [
   title : "Question #6",
   choices :["A","B","C","D"],
   answer : ["C"]
-  }
+  },
+  {
+    title : "Question #7",
+  choices :["A","B","C","D"],
+  answer : ["C"]
+  },
       
 ];
+
+for (var i =0; questions.length; i++) {
+  questions [i].choices;
+  return
+}
 
 // event listener- button click
 $(".btn-start").on("click", startQuiz);
