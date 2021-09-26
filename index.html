@@ -7,13 +7,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
     <title>Code Quiz Game</title>
 </head>
-<header class="container row">
-    <div class="col-lg-4">
-        <h4 class="float-left space-between text-primary" id="highscore">High Score :<span id="score">0</span></h4>
-    </div>
+
+<!-- Header added onto top of page-->
+<header>
+    <div class="container row space-between">
+        <div class="col-lg-4">
+            <h4 class="float-left text-primary" id="highscore">High Score :<span id="score">0</span></h4>
+        </div>
 </br></br></br></br></br>
-    <div class="col-lg-4">
-        <h4 class="float-right text-primary" id="timecounter">Timer :<span id="timer">75</span></h4>
+        <div class="col-lg-4">
+            <h4 class="float-right text-primary" id="timecounter">Timer :<span id="timer">75</span></h4>
+        </div>
     </div>
 </header>
 <body>
@@ -25,10 +29,7 @@
                 <div class="col-lg-4 float-center">
                     <h2 class="code-title">Code-Quiz</h2>
                 </div>
-            </br>
-                <div class="col-lg-4"></div>
-                
-
+            </br></br></br></br>
             </div>
             <div class="quiz-questions d-none" id="quiz-questions">
                 <h2 class="text-info text-center" id="title-item"></h2>
@@ -46,11 +47,12 @@
                 <input type="text" class="form-control" placeholder="Enter your initials:" id="inputScore" aria-describedby="basic-addon2">
                 <div class="input-group-append">
                     <button class="input-group-text btn btn-primary" id="btnScore">Submit</button>
-
                 </div>
             </div>
         </div>
     </div>
+
+<!-- jQuery add on-->    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js"></script>

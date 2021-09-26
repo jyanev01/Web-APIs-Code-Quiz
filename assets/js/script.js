@@ -1,46 +1,117 @@
-var timer = 75;
+var timer = $("#timer");
+var startBtn = $("#btn-start")
 var score = 0;
-var startBtn = $(btn-start);
+var storedScores = 
+var score = 0;
+var count = 75;
+
 
 // array of questions
-var questions = [
+const myQuestions = [
   {
-    title : "How many presidents has the United States had?",
-    choices :["32","68","46","51"], 
-    answer : "46"
+    question : "How many presidents has the United States had?",
+    choices :{
+      A: "32",
+      B: "68",
+      C: "46",
+      D: "51"}, 
+    correctAnswer : "C"
   },
   {
-    title : "How many member states comprise the United Nations",
-    choices :["208","152","193","I don't Know"], 
-    answers : "193"
+    question : "How many member states comprise the United Nations",
+    choices :{
+      A: "208",
+      B: "152",
+      C: "193",
+      D: "I don't Know"}, 
+    correctAnswer : "B"
   },
   {
-    title : "Commonly uded data types DO not include",
-    choices :["A","B","C","D"], 
-    answer : ["A"]
+    question : "Commonly uded data types DO not include",
+    choices :{
+      A: "A",
+      B: "B",
+      C: "C",
+      D: "D"}, 
+    correctAnswer : "A"
   },
   {
-    title : "Question #4",
-    choices :["A","B","C","D"],
-    answer : ["C"]
+    question : "Question #4",
+    choices :{
+      A: "A",
+      B: "B",
+      C: "C",
+      D: "D"},
+    correctAnswer : "C"
   },
   {
     title : "Question #5",
-    choices :["A","B","C","D"],
-    answer : ["C"]
+    choices :{
+      A: "A",
+      B: "B",
+      C: "C",
+      D: "D"},
+    correctAnswer : "C"
   },
   {
     title : "Question #6",
-    choices :["A","B","C","D"],
-    answer : ["C"]
+    choices :{
+      A: "A",
+      B: "B",
+      C: "C",
+      D: "D"},
+    correctAnswer : "C"
   },
   {
     title : "Question #7",
-    choices :["A","B","C","D"],
-    answer : ["C"]
+    choices :{
+      A: "A",
+      B: "B",
+      C: "C",
+      D: "D"},
+    correctAnswer : "C"
   },
       
 ];
+
+function buildQuiz(){
+  // variable to store the HTML output
+  const output =[];
+
+  // for each questoin
+  myQuestions.forEach(currentQuestion, questionNumber) ==> {
+    // variable to store the list of possible answers
+    const answers =[];
+
+    // and for each available answer..
+    for( letter in currentQuestion.answer) {
+      // ...add an HTMl radio button
+      answers.push(
+        <label>
+          <input type="radio" name="questions${questionNumber}" value="${letter}"></input>
+            ${letter} :
+            ${currentQuestion.answer[letter]}
+          
+        </label>
+      );
+    }
+
+    // add this question and its answers to the output
+    output.push(
+      <div class="question"> ${currentQuestion.question} </div>
+      <div class="answers">${answers.join('')} </div>
+    );
+  }
+};
+
+function showResults(){}
+
+// display quiz right away
+buildQuiz();
+
+// on submit, show results
+submitButton.addEventListener('click', showResults);
+
 
 // for loop can pull questions in sequence
 for (var i =0; questions.length; i++) {
@@ -51,11 +122,16 @@ for (var i =0; questions.length; i++) {
   return
 };
 
+$(choiceOfQuestion).json();
+
+
 // event listener- button click
 $(".btn-start").on("click", startQuiz);
 
 function startQuiz() {
-  if(storedScores !==null) {}
+  if(storedScores !==null) {
+
+  }
 }
 
 
@@ -73,16 +149,6 @@ var mainEl = document.getElementById('main');
 var startBtn = document.getElementById('start');
 
   
-// TODO: Create an array with five question objects
-var questions=[
-    { q:"Is the skye blue?", a: true},
-    { q:"Are bananas are vegetables?", a: false},
-    { q:"Was the delcaration of indepenced written in 1745?", a: false},
-    { q:"365 days in a year", a: true},
-    { q:"42 ounces in a pound", a: false},
-];
-
-
 
 // TODO: Create a variable to keep track of the score
 var score=0
