@@ -1,10 +1,15 @@
-var timer = $("#timer");
-var startBtn = $("#btn-start")
-var score = 0;
-var storedScores = 
-var score = 0;
-var count = 75;
 
+var timer = $("#timer");
+var startBtn = $("#btn-start");
+var timeCounter = $("timecounter");
+var titleItem = $("title-item");
+var correctAnswer = $("questions-answers");
+var playerScore = $("score");
+var btnScore = $("btnScore");
+var currentIndex = 0;
+var score = 0;
+var allScore = [];
+var storedScores = json.parse(localStorage.getItem("userData"));
 
 // array of questions
 const myQuestions = [
@@ -36,31 +41,31 @@ const myQuestions = [
     correctAnswer : "A"
   },
   {
-    question : "Question #4",
+    question : "How do you create take an array and create a string",
     choices :{
-      A: "A",
-      B: "B",
-      C: "C",
-      D: "D"},
+      A: "JSON.stringify",
+      B: "document.getElementbyId.",
+      C: "Add and Element using <>",
+      D: "None of the above"},
     correctAnswer : "C"
   },
   {
-    title : "Question #5",
+    title : "Which libary helps with webpage styling",
     choices :{
-      A: "A",
-      B: "B",
-      C: "C",
-      D: "D"},
-    correctAnswer : "C"
+      A: "JQuery",
+      B: "BootStrap",
+      C: "Mango DB",
+      D: "Node.js"},
+    correctAnswer : "B"
   },
   {
-    title : "Question #6",
+    title : "What does DRY method stand for",
     choices :{
-      A: "A",
-      B: "B",
-      C: "C",
-      D: "D"},
-    correctAnswer : "C"
+      A: "Do Right by You",
+      B: "Don't Repear Yourself",
+      C: "Do Repeat Yourself",
+      D: "Divide Repositories Yearly"},
+    correctAnswer : "B"
   },
   {
     title : "Question #7",
@@ -74,27 +79,34 @@ const myQuestions = [
       
 ];
 
+
+// Timer that counts down from 75
+function countdown() {
+  var timeInterval=  setInterval(function(){
+    timer.innerText = timeLeft
+    timeLeft--;
+    },1000);
+};
+
+
+
+
 function buildQuiz(){
+  // for loop can pull questions in sequence
+  for (var i =0; questions.length; i++) {
+  var choiceOfQuestion= questions[i].choices;
+
+  // jQuery add choiceOfQuestion to html dynamically
+  CONTENT.replaceWith(choiceOfQuestion)
+  return
+
+};
+
+$(choiceOfQuestion).json();
+
   // variable to store the HTML output
   const output =[];
 
-  // for each questoin
-  myQuestions.forEach(currentQuestion, questionNumber) ==> {
-    // variable to store the list of possible answers
-    const answers =[];
-
-    // and for each available answer..
-    for( letter in currentQuestion.answer) {
-      // ...add an HTMl radio button
-      answers.push(
-        <label>
-          <input type="radio" name="questions${questionNumber}" value="${letter}"></input>
-            ${letter} :
-            ${currentQuestion.answer[letter]}
-          
-        </label>
-      );
-    }
 
     // add this question and its answers to the output
     output.push(
@@ -102,12 +114,36 @@ function buildQuiz(){
       <div class="answers">${answers.join('')} </div>
     );
   }
+  // add this question and its answers to the output
+  output.push(
+    <div class="questions"> ${currentQuestion.question}</div>
+    <div class="answers"> $ {answers.join('')}</div>
+    );
+
+  quizContainer.innerHTML = output.join(' ');
 };
 
-function showResults(){}
+// event listener- button click
+$(".btn-start").on("click", buildQuiz);
 
-// display quiz right away
-buildQuiz();
+
+
+function showResults(){
+  // gather answer containers from our quiz
+  const answerContainers = quizCOntainer.querySelector('.answers');
+
+  // keep track of user's answers
+  let numCorrect = 0;
+  
+  // for 
+}
+
+// Variables
+const quizContainer = document.getElementById('quiz');
+const resultsContainer = document.getElementById('results');
+const submitButton = document.getElementById('submit');
+const myQuestion = [...];
+
 
 // on submit, show results
 submitButton.addEventListener('click', showResults);
@@ -125,8 +161,6 @@ for (var i =0; questions.length; i++) {
 $(choiceOfQuestion).json();
 
 
-// event listener- button click
-$(".btn-start").on("click", startQuiz);
 
 function startQuiz() {
   if(storedScores !==null) {
@@ -135,13 +169,6 @@ function startQuiz() {
 }
 
 
-// Timer that counts down from 75
-function countdown() {
-  var timeInterval=  setInterval(function(){
-    timer.innerText = timeLeft
-    timeLeft--;
-    },1000);
-};
 
 // 
 var timerEl = document.getElementById('countdown');
@@ -150,23 +177,6 @@ var startBtn = document.getElementById('start');
 
   
 
-// TODO: Create a variable to keep track of the score
-var score=0
-
-// TODO: Iterate over the questions array and display each question in a confirmation box
-for (let index = 0; index < questions.length; index++) {
-    
-    var userAnswer = confirm(questions[index].q);
-
-    if(userAnswer === questions[index].a) {
-        score++;
-        alert("Correct");
-    } else {
-        alert("Incorrect");
-    };
-};
-
-alert("Final Score is "+ score + "/"+questions.length);
 
 
 
